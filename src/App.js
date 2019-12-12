@@ -1,26 +1,54 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Switch, Route, Redirect } from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Landing from "./pages/landing";
+import Signin from "./pages/signin";
+import Signup from "./pages/signup";
+import Signout from "./components/signout";
+import "./css/_App.scss";
+
+import { auth } from "./firebase/firebase.utils";
+
+class App extends React.PureComponent {
+  constructor() {
+    super();
+    this.state = {
+      currentUser: null
+    };
+  }
+  unsubscribeFromAuth = null;
+  componentDidMount() {
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(user => {
+      this.setState({ currentUser: user });
+      console.log(this.state.currentUser);
+    });
+  }
+  componentWillUnmount() {
+    this.unsubscribeFromAuth();
+  }
+  render() {
+    return (
+      <div className='App'>
+        <Switch>
+          <Route exact path='/' component={Landing} />
+          <Route
+            exact
+            path='/signin'
+            component={Signin}
+            currentUser={this.state.currentUser}
+            render={() =>
+              this.state.currentUser ? (
+                <Redirect to='/' />
+              ) : (
+                <Redirect to='/signin' />
+              )
+            }
+          />
+          <Route exact path='/signup' component={Signup} />
+        </Switch>
+      </div>
+    );
+  }
 }
 
 export default App;

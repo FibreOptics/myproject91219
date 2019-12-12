@@ -1,0 +1,108 @@
+@import "./abstracts/mixins";
+
+$color-dark-blue: rgb(14, 45, 61);
+.App {
+  height: 100vh;
+  background: linear-gradient(
+      to right bottom,
+      rgba(rgba(39, 34, 51, 0.705), 0.2),
+      rgba(rgb(112, 112, 245), 0.3)
+    ),
+    url(../assets/cristiano-mozzillo-v3d5uBB26yA-unsplash.png) no-repeat center
+      center;
+  background-size: cover;
+  text-align: center;
+  color: white;
+  position: relative;
+}
+.content {
+  @include alignCenter;
+}
+.text-heading {
+  background-color: rgba(0, 0, 0, 0.24);
+  padding: 1em;
+  border-radius: 15px;
+  backface-visibility: hidden;
+}
+.button-group {
+  display: flex;
+  padding: 3em 0em;
+  justify-content: space-evenly;
+}
+.heading {
+  display: block;
+  font-size: 60px;
+  font-weight: 700;
+  letter-spacing: 17px;
+
+  animation: moveInFromLeft 1s ease-out 1s;
+}
+.heading-sub {
+  display: block;
+  font-size: 36px;
+  font-weight: 400;
+  letter-spacing: 5px;
+  animation: moveInFromRight 1s ease-out 1s;
+  &:last-child {
+    animation: moveInFromLeft 1s ease-out 1s;
+  }
+}
+.logo-box {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+}
+.logo {
+  height: 70px;
+}
+.link {
+  min-width: 165px;
+  width: auto;
+  height: 50px;
+  letter-spacing: 0.5px;
+  line-height: 50px;
+  padding: 0 35px 0 35px;
+  font-size: 15px;
+  background-color: aliceblue;
+  color: black;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 700;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: aliceblue;
+    color: black;
+    border: 1px solid black;
+  }
+}
+
+@keyframes moveInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  80% {
+    transform: translateX(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  80% {
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
