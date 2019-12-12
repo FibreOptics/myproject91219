@@ -35,7 +35,7 @@ class App extends React.PureComponent {
             exact
             path='/signin'
             //component={Signin}
-            currentUser={this.state.currentUser}
+            //currentUser={this.state.currentUser}
             render={() =>
               this.state.currentUser ? <Redirect to='/' /> : <Signin />
             }

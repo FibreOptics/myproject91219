@@ -12,13 +12,13 @@ class SignIn extends Component {
       password: ""
     };
   }
-  componentDidMount() {
+  /*   componentDidMount() {
     const { currentUser } = this.props;
     if (currentUser) {
       console.log("in");
       return <Redirect to='/' />;
     }
-  }
+  } */
   handleSubmit = event => {
     event.preventDefault();
     this.setState({ email: "", password: "" });
