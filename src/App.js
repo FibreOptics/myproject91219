@@ -4,7 +4,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import Landing from "./pages/landing";
 import Signin from "./pages/signin";
 import Signup from "./pages/signup";
-import Signout from "./components/signout";
+//import Signout from "./components/signout";
 import "./css/_App.scss";
 
 import { auth } from "./firebase/firebase.utils";
@@ -34,14 +34,10 @@ class App extends React.PureComponent {
           <Route
             exact
             path='/signin'
-            component={Signin}
+            //component={Signin}
             currentUser={this.state.currentUser}
             render={() =>
-              this.state.currentUser ? (
-                <Redirect to='/' />
-              ) : (
-                <Redirect to='/signin' />
-              )
+              this.state.currentUser ? <Redirect to='/' /> : <Signin />
             }
           />
           <Route exact path='/signup' component={Signup} />
