@@ -1,6 +1,6 @@
 import React from "react";
-import "../css/_App.scss";
-import logo from "../assets/white-cd.png";
+import "css/_App.scss";
+import logo from "assets/white-cd.png";
 
 export default function Logo() {
   return (

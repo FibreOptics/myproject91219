@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
-import Logo from "../components/logo";
-import CustomButton from "../components/custom-button";
-import { signInWithGoogle } from "../firebase/firebase.utils";
+import Logo from "react/components/logo";
+import CustomButton from "react/components/custom-button";
+import { signInWithGoogle } from "firebase/firebase.utils";
 
 class SignIn extends Component {
   constructor(props) {
@@ -12,13 +11,6 @@ class SignIn extends Component {
       password: ""
     };
   }
-  /*   componentDidMount() {
-    const { currentUser } = this.props;
-    if (currentUser) {
-      console.log("in");
-      return <Redirect to='/' />;
-    }
-  } */
   handleSubmit = event => {
     event.preventDefault();
     this.setState({ email: "", password: "" });

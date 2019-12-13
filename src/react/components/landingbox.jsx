@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../css/_App.scss";
+import "../../css/_App.scss";
 
 export default function landingbox() {
   return (
