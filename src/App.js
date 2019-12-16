@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 
 //Components & CSS
 import Landing from "react/pages/landing";
@@ -42,7 +42,6 @@ class App extends React.PureComponent {
   render() {
     return (
       <div className='App'>
-        <Link to='/dashboard'>to Dashboard</Link>
         <Switch>
           <Route exact path='/' component={Landing} />
           <Route

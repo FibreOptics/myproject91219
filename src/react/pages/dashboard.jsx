@@ -1,9 +1,10 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
+//import { Redirect } from "react-router-dom";
 
 //Components & CSS
 import Logo from "../components/logo";
-import Signout from "../components/signout";
+import CustomButton from "../components/custom-button";
+import { auth } from "firebase/firebase.utils";
 
 //Redux
 import { connect } from "react-redux";
@@ -13,8 +14,8 @@ const Dashboard = ({ currentUser }) => {
   return (
     <div>
       <Logo />
-      {/* {currentUser ? <Signout /> : <Redirect to='/' />} */}
-      This is the home
+      <CustomButton onClick={() => auth.signOut()}>Sign out</CustomButton>
+      <p>Our Dashboard</p>
     </div>
   );
 };

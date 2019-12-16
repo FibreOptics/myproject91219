@@ -55,6 +55,7 @@ $color-dark-blue: rgb(14, 45, 61);
 .logo {
   height: 70px;
 }
+
 .link {
   min-width: 165px;
   width: auto;
@@ -79,6 +80,17 @@ $color-dark-blue: rgb(14, 45, 61);
   }
 }
 
+//Sign in
+.signin-form {
+  background-color: rgba(0, 0, 0, 0.24);
+  padding: 1em;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  @include alignCenter;
+}
+
+//keyframes
 @keyframes moveInFromLeft {
   0% {
     opacity: 0;

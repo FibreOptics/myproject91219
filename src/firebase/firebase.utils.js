@@ -32,7 +32,7 @@ export const signInWithGoogle = () =>
         console.log(result);
         //Auth.setLoggedIn(true);
       })
-      .catch(e => console.log(e.message));
+      .catch(e => console.log(e));
   });
 
 export const firestore = firebase.firestore();
