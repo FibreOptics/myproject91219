@@ -7,6 +7,9 @@ import FormInput from "react/components/form-input";
 import "css/_App.scss";
 import { Link } from "react-router-dom";
 
+//Firebase
+import { auth } from "firebase/firebase.utils";
+
 class SignIn extends Component {
   constructor(props) {
     super(props);
@@ -15,9 +18,15 @@ class SignIn extends Component {
       password: ""
     };
   }
-  handleSubmit = event => {
+  handleSubmit = async event => {
     event.preventDefault();
-    this.setState({ email: "", password: "" });
+    const { email, password } = this.state;
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      this.setState({ email: "", password: "" });
+    } catch (error) {
+      console.log(error);
+    }
   };
   handleChange = event => {
     //console.log(event.target);
@@ -52,7 +61,9 @@ class SignIn extends Component {
               autoComplete='current-password'
             />
             <div className='signin-buttonrow'>
-              <CustomButton type='submit'>SignIn</CustomButton>
+              <CustomButton type='submit' onClick={this.handleSubmit}>
+                SignIn
+              </CustomButton>
               <CustomButton
                 onClick={e => {
                   //e.preventDefault();

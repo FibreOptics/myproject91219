@@ -10,7 +10,7 @@ import { auth } from "firebase/firebase.utils";
 import { connect } from "react-redux";
 
 const Dashboard = ({ currentUser }) => {
-  console.log(currentUser);
+  //console.log(currentUser);
   return (
     <div>
       <Logo />
