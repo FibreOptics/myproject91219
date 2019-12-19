@@ -15,6 +15,7 @@ const config = {
 
 firebase.initializeApp(config);
 
+// AUTH
 export const auth = firebase.auth();
 
 // always trigger google popup for auth and sign in
@@ -22,7 +23,6 @@ const provider = new firebase.auth.GoogleAuthProvider();
 provider.setCustomParameters({ prompt: "select_account" });
 
 //export const signInWithGoogle = () => auth.signInWithPopup(provider);
-
 export const signInWithGoogle = () =>
   auth.setPersistence(firebase.auth.Auth.Persistence.SESSION).then(() => {
     firebase
@@ -35,7 +35,9 @@ export const signInWithGoogle = () =>
       .catch(e => console.log(e));
   });
 
+//FIRESTORE
 export const firestore = firebase.firestore();
+
 export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return; //case the user is null
 

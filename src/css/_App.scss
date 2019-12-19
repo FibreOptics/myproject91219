@@ -51,9 +51,10 @@ $color-dark-blue: rgb(14, 45, 61);
   position: absolute;
   top: 40px;
   left: 40px;
+  height: 70px;
 }
 .logo {
-  height: 70px;
+  width: 70px;
 }
 
 .link {
@@ -82,6 +83,22 @@ $color-dark-blue: rgb(14, 45, 61);
 
 //Sign in
 .signin-form {
+  min-width: 36%;
+  background-color: rgba(0, 0, 0, 0.24);
+  padding: 1em;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  @include alignCenter;
+  .signin-buttonrow {
+    display: flex;
+    justify-content: space-evenly;
+  }
+}
+
+//Sign up
+.signup-form {
+  min-width: 36%;
   background-color: rgba(0, 0, 0, 0.24);
   padding: 1em;
   border-radius: 15px;
@@ -90,6 +107,24 @@ $color-dark-blue: rgb(14, 45, 61);
   @include alignCenter;
 }
 
+.goback {
+  position: absolute;
+  font-size: 25px;
+  text-decoration: none;
+
+  &.signin {
+    top: 2%;
+    left: 3%;
+  }
+
+  cursor: pointer;
+  &:hover {
+    animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  }
+  &:visited {
+    color: white;
+  }
+}
 //keyframes
 @keyframes moveInFromLeft {
   0% {
@@ -104,7 +139,6 @@ $color-dark-blue: rgb(14, 45, 61);
     transform: translate(0);
   }
 }
-
 @keyframes moveInFromRight {
   0% {
     opacity: 0;
@@ -116,5 +150,27 @@ $color-dark-blue: rgb(14, 45, 61);
   100% {
     opacity: 1;
     transform: translate(0);
+  }
+}
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-3px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
   }
 }

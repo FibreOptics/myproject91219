@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import Logo from "react/components/logo";
+
 import CustomButton from "react/components/custom-button";
 import { signInWithGoogle } from "firebase/firebase.utils";
 
 import FormInput from "react/components/form-input";
 import "css/_App.scss";
+import { Link } from "react-router-dom";
 
 class SignIn extends Component {
   constructor(props) {
@@ -26,18 +27,20 @@ class SignIn extends Component {
   render() {
     return (
       <div>
-        <Logo />
         <div className='signin-form'>
+          <Link className='goback signin' to='/'>
+            &larr;
+          </Link>
+          <h2>SIGN IN</h2>
+          <p>Sign in with your email and password</p>
           <form onSubmit={this.handleSubmit}>
-            <h2>SIGN IN</h2>
-            <p>Sign in with your email and password</p>
             <FormInput
               name='email'
               type='email'
               onChange={this.handleChange}
               value={this.state.email}
               label='email'
-              autocomplete='username'
+              autoComplete='username'
             />
             <FormInput
               name='password'
@@ -46,10 +49,19 @@ class SignIn extends Component {
               value={this.state.password}
               label='password'
               required
-              autocomplete='current-password'
+              autoComplete='current-password'
             />
-            <CustomButton>SignIn</CustomButton>
-            <CustomButton onClick={signInWithGoogle}>Google</CustomButton>
+            <div className='signin-buttonrow'>
+              <CustomButton type='submit'>SignIn</CustomButton>
+              <CustomButton
+                onClick={e => {
+                  //e.preventDefault();
+                  signInWithGoogle();
+                }}
+              >
+                Google
+              </CustomButton>
+            </div>
           </form>
         </div>
       </div>

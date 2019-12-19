@@ -8,6 +8,8 @@ import Signup from "react/pages/signup";
 import Dashboard from "react/pages/dashboard";
 import "css/_App.scss";
 
+import Logo from "react/components/logo";
+
 //Redux
 import { connect } from "react-redux";
 import { setCurrentUser } from "redux/actions/user-actions";
@@ -30,10 +32,11 @@ class App extends React.PureComponent {
               ...snapShot.data()
             }
           });
+          //console.log(this.state);
         });
       }
-      setCurrentUser(userAuth);
-      console.log(userAuth);
+      //set user null in case logged out
+      else setCurrentUser(userAuth);
     });
   }
   componentWillUnmount() {
@@ -42,6 +45,7 @@ class App extends React.PureComponent {
   render() {
     return (
       <div className='App'>
+        <Logo />
         <Switch>
           <Route exact path='/' component={Landing} />
           <Route
